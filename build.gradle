@@ -16,4 +16,4 @@ javafx {
     modules = [ 'javafx.controls' ]
 }
 
-mainClassName = 'com.game.paperRockScissors.PaperRockScissors'
+mainClassName = 'com.game.PaperRockScissors'
