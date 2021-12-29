@@ -145,11 +145,22 @@ public class GameBoard {
 
     private void setOnAction(Button button) {
         button.setOnAction(event -> {
-            setStartFigures();
-            continueBtn.setDisable(true);
             if (button == restartBtn) {
-                restartGame();
-                restartBtn.setDisable(true);
+                String info = "This action will restart the game. Press OK to continue";
+                Alert restartAlert = new Alert(Alert.AlertType.CONFIRMATION, info, ButtonType.YES, ButtonType.NO);
+                restartAlert.setTitle("Restart the game");
+                restartAlert.showAndWait();
+                if (restartAlert.getResult() == ButtonType.YES) {
+                    restartGame();
+                    setStartFigures();
+                    restartBtn.setDisable(true);
+                    continueBtn.setDisable(true);
+                } else {
+                    return;
+                }
+            } else {
+                setStartFigures();
+                continueBtn.setDisable(true);
             }
         });
     }
